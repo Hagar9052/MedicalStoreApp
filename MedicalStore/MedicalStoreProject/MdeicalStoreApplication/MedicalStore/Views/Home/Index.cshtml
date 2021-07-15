@@ -1,0 +1,170 @@
+﻿@model IEnumerable<ProductViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    var lastProduct = Model.LastOrDefault();
+    var categories = ViewBag.cats as List<CategoryViewModel>;
+}
+
+
+<!-- Banner -->
+
+<div class="banner" style="border-bottom: 3px solid cornflowerblue;">
+    <div class="banner_background"></div>
+    <div class="container fill_height">
+        <div class="row fill_height">
+            <div class="banner_product_image">
+                <img src="data:image/png;base64,@lastProduct.Image" alt="" style="width: 35%; float: right;" />
+            </div>
+            <div class="col-lg-5 offset-lg-4 fill_height">
+                <div class="banner_content">
+                    <h1 class="banner_text">@lastProduct.Name</h1>
+                    <div class="banner_price">@lastProduct.Price.ToString("0.#####") LE</div>
+                    <div class="banner_product_name">@categories.Find(ww => ww.Id == lastProduct.CategoryId).Name</div>
+                    <div class="button banner_button">@Html.ActionLink("Buy Now", "ProductDetails", "Shop", htmlAttributes: new { }, routeValues: new { id = lastProduct.Id })</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Characteristics -->
+
+<div class="characteristics" style="border-bottom: 3px solid cornflowerblue;">
+    <div class="container">
+        <div class="row">
+            <!-- Char. Item -->
+            <div class="col-lg-6 col-md-6 char_col">
+                <div class="char_item d-flex flex-row align-items-center justify-content-start">
+                    <div class="char_icon">
+                        <img src="~/Images/char_1.png" alt="" />
+                    </div>
+                    <div class="char_content">
+                        <div class="char_title">Fast Delivery</div>
+                        <div class="char_subtitle">12.5 % Order total</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Char. Item -->
+            <div class="col-lg-6 col-md-6 char_col">
+                <div class="char_item d-flex flex-row align-items-center justify-content-start">
+                    <div class="char_icon">
+                        <img src="~/Images/char_3.png" alt="" />
+                    </div>
+                    <div class="char_content">
+                        <div class="char_title">Cash on delivey Payment</div>
+                        <div class="char_subtitle">Easy payment way</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<section class="first-home">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-xs-12 home-h">
+                <h1 class="home-head text-center">
+                    About medical store
+                </h1>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <img src="~/Images/banner_2_product.png" class="img-fluid" data-aos="zoom-in">
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <p class="desc-home" data-aos="fade-left">
+                    Medical Store is a virtual store on the Internet where customers
+                    can browse the catalog and select products of interest. The
+                    selected items may be collected in a shopping cart. At checkout
+                    time, the items in the shopping cart will be presented as an
+                    order. At that time, more information will be needed to complete
+                    the transaction. Usually, the customer will be asked to fill or
+                    select a billing address, a shipping address, phone number, Cash
+                    on Delivery.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="second-home">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-xs-12 home-h">
+                <h1 class="home-head text-center" data-aos="fade-in">
+                    Coronavirus<br>
+                    (History)
+                </h1>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <p class="desc-home" data-aos="fade-right">
+                    Coronaviruses were first discovered in the
+                    1930s when an acute respiratory infection of domesticated
+                    chickens was shown to be caused by infectious bronchitis
+                    virus (IBV). Arthur Schalk and M.C. Hawn described in
+                    1931 a new respiratory infection of chickens in North Dakota.
+                    The infection of new-born chicks was characterized by gasping
+                    and listlessness. The chicks' mortality rate was 40–90%.
+                    Fred Beaudette and Charles Hudson six years later
+                    successfully isolated and cultivated the infectious bronchitis
+                    virus which caused the disease. In the 1940s,
+                    two more animal coronaviruses, mouse hepatitis virus
+                    (MHV) and transmissible gastroenteritis virus (TGEV),
+                    were isolated. It was not realized at the time that
+                    these three different viruses were related
+                </p>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <img src="~/Images/crona2.jpg" class="img-fluid" data-aos="zoom-in">
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <!-- <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+            <div class="elfsight-app-4add1988-ab7c-4b12-9b6c-deed192ba86e"></div> -->
+            <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+            <div class="elfsight-app-2f3f7cba-8b9a-4847-bf5f-87ff884dc5bc" data-aos="fade-left"></div>
+        </div>
+    </div>
+</div>
+<section class="three-home">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-xs-12 home-h">
+                <h1 class="home-head text-center" data-aos="fade-in">
+                    COVID-19
+                </h1>
+            </div>
+            <div class="col-md-6 col-xs-12" data-aos="fade-up">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/nIln6qpcO2w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <p class="desc-home" data-aos="fade-down">
+                    From recent reports about the
+                    stealthy ways the so-called Covid-19
+                    virus spreads and maims, a picture is
+                    emerging of an enigmatic pathogen whose
+                    effects are mainly mild, but which occasionally
+                    — and unpredictably — turns deadly in the second week.
+                    In less than three months, it’s infected almost 78,000 people,
+                    mostly in China, and killed more than 2,300….“Whether it will
+                    be contained or not, this outbreak is rapidly becoming the first
+                    true pandemic challenge that fits the disease X category,” Marion
+                    Koopmans, head of viroscience at Erasmus University Medical
+                    Center in Rotterdam, and a member of the WHO’s emergency
+                    committee, wrote Wednesday in the journal Cell.The disease
+                    has now spread to more than two dozen countries and territories.
+                    Some of those infected caught the virus in their local community
+                    and have no known link to China, the U.S. Centers for Disease Control
+                    and Prevention said.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

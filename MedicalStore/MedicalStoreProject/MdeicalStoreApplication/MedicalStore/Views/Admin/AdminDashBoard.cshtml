@@ -1,0 +1,100 @@
+﻿@model RegisterViewModel
+@{
+    Layout = null;
+    var catViewModel = new CategoryViewModel();
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+    <link href="~/Content/Custom/admin.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <section class="admin-side text-center">
+        <div class="one x">
+            <p class="name-admin">@MedicalStore.Helpers.AuthorizationHelper.GetUserInfo().UserName</p>
+        </div>
+        <span class="hr"></span>
+        <div class="two x">
+            <h3 class="admins-add">Admins</h3>
+        </div>
+        <span class="hr"></span>
+        <div class="three x">
+            <h3 class="products-add">Products</h3>
+        </div>
+        <div class="three x">
+            <h3 class="categorie-add">Categories</h3>
+        </div>
+        <div class="three x">
+            <h3 class="order-status">Orders</h3>
+        </div>
+
+        <div class="three x">
+            <h3 class="mail1">Contact requests</h3>
+        </div>
+        <ul>
+            <li><button class="logout" onclick="location.href = '@Url.Action("Logout", "Account")'">Logout</button></li>
+        </ul>
+    </section>
+    <!-- //////// -->
+    <section class="content-side">
+        <div class="main">
+            <div class="form">
+                @*<input type="text" name="user" placeholder="Username" autocomplete="off">
+            <input type="email" name="mail" placeholder="email" autocomplete="off">
+            <input type="password" name="pass" placeholder="password">
+            <input type="password" name="pass" placeholder="confirm password">
+            <button class="btn-1"> Add</button>*@
+
+                @using (Html.BeginForm("RegisterAdmin", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.TextBoxFor(i => i.UserName, htmlAttributes: new { name = "user", placeholder = "Username", autocomplete = "off" })
+                    @Html.ValidationMessageFor(i => i.UserName, "", htmlAttributes: new { @class = "text-danger" })
+
+                    @Html.EditorFor(i => i.Email, additionalViewData: new { htmlAttributes = new { name = "mail", placeholder = "Email", autocomplete = "off" } })
+                    @Html.ValidationMessageFor(i => i.Email, "", htmlAttributes: new { @class = "text-danger" })
+
+                    @Html.EditorFor(i => i.Password, additionalViewData: new { htmlAttributes = new { name = "pass", placeholder = "Password", autocomplete = "off" } })
+                    @Html.ValidationMessageFor(i => i.Password, "", htmlAttributes: new { @class = "text-danger" })
+
+                    @Html.EditorFor(i => i.ConfirmPassword, additionalViewData: new { htmlAttributes = new { name = "pass", placeholder = "ConfirmPassword", autocomplete = "off" } })
+                    @Html.ValidationMessageFor(i => i.ConfirmPassword, "", htmlAttributes: new { @class = "text-danger" })
+
+                    <button type="submit" class="btn-1"> Add</button>
+                }
+            </div>
+
+            <div class="catig">
+                @Html.Action("Products", "Admin")
+            </div>
+
+            <!-- categores -->
+            <div class="cat">
+                @Html.Partial("Categories")
+            </div>
+
+            <!-- orders -->
+            <div class="order">
+                @{Html.RenderAction("Orders", "Admin"); }
+            </div>
+
+            <div class="mail">
+                @Html.Action("ContactUs" ,"Admin")
+            </div>
+
+        </div>
+    </section>
+    <!-- script files -->
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/Custom/admin.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,24 @@
+﻿@model IEnumerable<MedicalStore.Models.CategoryViewModel>
+
+<div class="cat_menu_container">
+    <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
+        <div class="cat_burger">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="cat_menu_text">categories</div>
+    </div>
+
+    <ul class="cat_menu">
+
+        @foreach (var item in Model)
+        {
+            <li>
+                @*<a href="#">*@
+                @Html.ActionLink($"{item.Name}" , "ViewCategoryProducts", "Shop",routeValues:new { id=item.Id},htmlAttributes:new { })
+                   
+                   
+                @*</a>*@
+            </li>
+        }
+    </ul>
+</div>

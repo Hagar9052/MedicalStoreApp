@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>medicalstore</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="OneTech shop project" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" />
+    <link href="~/Content/owl.carousel.css" rel="stylesheet" />
+    <link href="~/Content/owl.theme.default.css" rel="stylesheet" />
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <link href="~/Content/slick.css" rel="stylesheet" />
+    <link href="~/Content/main_styles.css" rel="stylesheet" />
+    <link href="~/Content/newHome.css" rel="stylesheet" />
+    <link href="~/Content/responsive.css" rel="stylesheet" />
+    <link href="~/Content/all.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/shop_styles.css" rel="stylesheet" />
+    <link href="~/Content/shop_responsive.css" rel="stylesheet" />
+    <link href="~/Content/product_styles.css" rel="stylesheet" />
+    <link href="~/Content/product_responsive.css" rel="stylesheet" />
+    <link href="~/Content/cart_styles.css" rel="stylesheet" />
+    <link href="~/Content/cart_responsive.css" rel="stylesheet" />
+    <link href="~/Content/Order.css" rel="stylesheet" />
+    <link href="~/Content/contact_styles.css" rel="stylesheet" />
+    <link href="~/Content/contact_responsive.css" rel="stylesheet" />
+    <link href="~/Content/aos.css" rel="stylesheet" />
+    <link href="~/Content/about.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/Images/letter-m.png">
+
+
+</head>
+
+<body>
+    <div class="super_container">
+        <!-- Header -->
+
+        <header class="header">
+            <!-- Top Bar -->
+
+            <div class="top_bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col d-flex flex-row">
+                            <div class="top_bar_contact_item">
+                                <div class="top_bar_icon">
+                                    <img src="images/phone.png" alt="" />
+                                </div>
+                                0110340540
+                            </div>
+                            <div class="top_bar_contact_item">
+                                <div class="top_bar_icon">
+                                    <img src="images/mail.png" alt="" />
+                                </div>
+                                <a href="mailto:fastsales@gmail.com">medicalstore@gmail.com</a>
+                            </div>
+                            <div class="top_bar_content ml-auto">
+                                <div class="top_bar_menu"></div>
+                                <div class="top_bar_user">
+                                    <div class="user_icon">
+                                        <img src="images/user.svg" alt="" />
+                                    </div>
+                                    @if (Session["id"] == null)
+                                    {
+                                        <div>
+                                            @Html.ActionLink("Register", "Register", "Account")
+                                        </div>
+                                        <div>
+                                            <a>@Html.ActionLink("Login", "Login", "Account")</a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div>
+                                            <a>@Html.ActionLink("Logout", "Logout", "Account")</a>
+                                        </div>
+
+                                        <div>
+                                            <span style="color:#0e8ce4;font-weight:bold">@Session["username"] </span>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header Main -->
+            <div class="header_main">
+                <div class="container">
+                    <div class="row">
+                        <!-- Logo -->
+                        <div class="col-lg-2 col-sm-3 col-3 order-1">
+                            <div class="logo_container">
+                                <div class="logo">@Html.ActionLink("Medical Store" ,"Index" ,"Home")</div>
+                            </div>
+                        </div>
+
+                        <!-- Search -->
+                        @{Html.RenderAction("Search", "Product"); }
+
+                        <!-- Wishlist -->
+                        <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
+                            <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
+
+                                <!-- Cart -->
+                                @if (Session["id"] != null)
+                                {
+                                    <div class="cart">
+                                        <div class="cart_container d-flex flex-row align-items-center justify-content-end">
+                                            <div class="cart_icon">
+                                                <i class="fas fa-cart-arrow-down" style="font-size: 35px;"></i>
+                                                <div class="cart_count"><span id="carCounter">0</span></div>
+
+                                            </div>
+                                            <div class="cart_content">
+                                                <div class="cart_text">@Html.ActionLink("Cart", "Cart", "Cart")</div>
+                                            </div>
+                                            <div class="cart_content">
+                                                <div class="cart_text">@Html.ActionLink("Orders", "OrdersContent", "Order")</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Navigation -->
+
+            <nav class="main_nav">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="main_nav_content d-flex flex-row">
+                                <!-- Categories Menu -->
+
+                                @Html.Action("AllCategories", "Categories")
+
+                                <!-- Main Nav Menu -->
+
+                                <div class="main_nav_menu ml-auto">
+                                    <ul class="standard_dropdown main_nav_dropdown">
+                                        <li>
+                                            @Html.ActionLink("Home", "Index", "Home")
+                                        </li>
+                                        <li class="hassubs">
+                                            @Html.ActionLink("Shop", "Shop", "Shop")
+                                        </li>
+                                        <li class="hassubs">
+                                            @Html.ActionLink("About", "About", "Home")
+
+                                        </li>
+                                        <li>
+                                            @Html.ActionLink("Contact Us", "ContactUs", "Home")
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Menu Trigger -->
+
+                                <div class="menu_trigger_container ml-auto">
+                                    <div class="menu_trigger d-flex flex-row align-items-center justify-content-end">
+                                        <div class="menu_burger">
+                                            <div class="menu_trigger_text">menu</div>
+                                            <div class="cat_burger menu_burger_inner">
+                                                <span></span><span></span><span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Menu -->
+
+            <div class="page_menu">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="page_menu_content">
+                                <ul class="page_menu_nav">
+                                    <li class="page_menu_item">
+                                        <a href="#">Home</a>
+                                    </li>
+                                    <li class="page_menu_item has-children">
+                                        <a href="#">Featured BrandsS</a>
+                                    </li>
+
+                                    <li class="page_menu_item">
+                                        <a href="blog.html">blog</a>
+                                    </li>
+                                    <li class="page_menu_item">
+                                        <a href="contact.html">contact</a>
+                                    </li>
+                                </ul>
+
+                                <div class="menu_contact">
+                                    <div class="menu_contact_item">
+                                        <div class="menu_contact_icon">
+                                            <img src="images/phone_white.png" alt="" />
+                                        </div>
+                                        01210340540
+                                    </div>
+                                    <div class="menu_contact_item">
+                                        <div class="menu_contact_icon">
+                                            <img src="images/mail_white.png" alt="" />
+                                        </div>
+                                        <a href="mailto:fastsales@gmail.com">medicalstore@gmail.com</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        @RenderBody()
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 footer_col">
+                        <div class="footer_column footer_contact">
+                            <div class="logo_container">
+                                <div class="logo"><a href="#">Medical Store</a></div>
+                            </div>
+                            <div class="footer_title">Have a question? call us</div>
+                            <div class="footer_phone">0110340540</div>
+                            <div class="footer_social">
+                                <ul>
+                                    <li>
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fab fa-google"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 offset-lg-2">
+                        <div class="footer_column">
+                            <div class="footer_title">Categories</div>
+
+
+                            @Html.Action("categoriesList", "categories")
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2">
+                        <div class="footer_column">
+                           
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="footer_column">
+                            <div class="footer_title">Sections</div>
+                            <ul class="footer_list">
+
+                                <li>@Html.ActionLink("Home", "index", "home")</li>
+                                <li>  @Html.ActionLink("Shop", "shop", "shop")</li>
+                                <li> @Html.ActionLink("About","about", "Home") </li>
+                                    <li> @Html.ActionLink("Contact Us", "contactUs","home")</li> 
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Copyright -->
+
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
+                            <div class="copyright_content">
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>
+                                    document.write(new Date().getFullYear());
+                                </script>
+                                ITI Ismallia 3M | Design
+                                <i class="fa fa-heart" aria-hidden="true"></i> by
+                                <a href="">MedicalStore Team</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </div>
+                            <div class="logos ml-sm-auto">
+                                <ul class="logos_list">
+                                    <li>
+                                        <a href=""><img src="images/logos_1.png" alt="" /></a>
+                                    </li>
+                                    <li>
+                                        <a href=""><img src="images/logos_2.png" alt="" /></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/popper.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/TweenMax.min.js"></script>
+    <script src="~/Scripts/TimelineMax.min.js"></script>
+    <script src="~/Scripts/ScrollMagic.min.js"></script>
+    <script src="~/Scripts/animation.gsap.min.js"></script>
+    <script src="~/Scripts/ScrollToPlugin.min.js"></script>
+    <script src="~/Scripts/owl.carousel.js"></script>
+    <script src="~/Scripts/slick.js"></script>
+    <script src="~/Scripts/jquery.easing.1.3.js"></script>
+    <script src="~/Scripts/isotope.pkgd.min.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/shop_custom.js"></script>
+    <script src="~/Scripts/parallax.min.js"></script>
+    <script src="~/Scripts/product_custom.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/cart_custom.js"></script>
+    <script src="~/Scripts/contact_custom.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBmnATbcsItV07AIzYhG-6E0ZYgZgTkh3w"></script>
+    <script src="~/Scripts/aos.js"></script>
+
+    <script>
+        $.get('/Cart/CartCounter', function (data) {
+            $('#carCounter').html(data);
+        });
+        function UpdateCartCounter() {
+            $('#carCounter').load('/Cart/CartCounter');
+
+
+        }
+                        //setInterval(function () {
+                        //$('#carCounter').load('/Cart/CartCounter');
+                        //}, 2000)
+
+
+        AOS.init({
+            duration: 2000,
+        });
+    </script>
+    @RenderSection("Scripts", false)
+</body>
+
+</html>

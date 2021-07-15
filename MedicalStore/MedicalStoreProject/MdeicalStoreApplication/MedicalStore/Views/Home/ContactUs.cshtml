@@ -1,0 +1,84 @@
+﻿@model ContactUsViewModel
+@{
+    ViewBag.Title = "ContactUs";
+}
+<!-- Contact Info -->
+
+<div class="contact_info">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="contact_info_container d-flex flex-lg-row flex-column justify-content-between align-items-between">
+
+                    <!-- Contact Item -->
+                    <div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="contact_info_image"><img src="~/Images/contact_1.png" alt=""></div>
+                        <div class="contact_info_content">
+                            <div class="contact_info_title">Phone</div>
+                            <div class="contact_info_text">0110340540</div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Item -->
+                    <div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="contact_info_image"><img src="~/Images/contact_2.png" alt=""></div>
+                        <div class="contact_info_content">
+                            <div class="contact_info_title">Email</div>
+                            <div class="contact_info_text">medicalstore@gmail.com</div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Item -->
+                    <div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="contact_info_image"><img src="~/Images/contact_3.png" alt=""></div>
+                        <div class="contact_info_content">
+                            <div class="contact_info_title">Address</div>
+                            <div class="contact_info_text">17th on the intersection of Tharwat and Ramses street Ismailia, Egypt</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Form -->
+
+<div class="contact_form">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="contact_form_container">
+                    <div class="contact_form_title">Medical Store </div>
+
+                    @using (Html.BeginForm("ContactUs", "Home", FormMethod.Post, new { id = "contact_form", enctype = "multipart/form-data" }))
+                    {
+                        <div class="contact_form_inputs d-flex flex-md-row flex-column justify-content-between align-items-between">
+                            @Html.TextBoxFor(i => i.Name, htmlAttributes: new { id = "contact_form_name", @class = "contact_form_name input_field", placeholder = "Your name" })
+
+                            @Html.TextBoxFor(i => i.Email, htmlAttributes: new { id = "contact_form_email", @class = "contact_form_email input_field", placeholder = "Your email" })
+
+                            @Html.TextBoxFor(i => i.Phone, htmlAttributes: new { id = "contact_form_phone", @class = "contact_form_phone input_field", placeholder = "Your phone number" })
+                        </div>
+                        <div class="contact_form_text">
+                            @Html.TextAreaFor(i => i.Message, htmlAttributes: new { id = "contact_form_message", @class = "text_field contact_form_message", name = "message", rows = "4", placeholder = "Message" })
+
+                        </div>
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                        <div class="contact_form_button">
+                            <button type="submit" class="button contact_submit_button">Send Message</button>
+                        </div>
+                    }
+
+                </div>
+                    </div>
+        </div>
+    </div>
+    <div class="panel"></div>
+</div>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27474.62291519142!2d32.25404434999998!3d30.59651419999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f85bff34f1282d%3A0x1febf76c88f3903a!2z2KfZhNmC2LXZitmFINmE2YPZhdin2YTZitin2Kog2YjZgti32Lkg2LrZitin2LEg2KfZhNiz2YrYp9ix2KfYqiDYp9mE2KfYs9mF2KfYudmK2YTZitip!5e0!3m2!1sar!2seg!4v1593196483362!5m2!1sar!2seg" width="100%" height="550px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+
+
+

@@ -1,0 +1,58 @@
+﻿@model MedicalStore.Models.RegisterViewModel 
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/form.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="row cll">
+            <a href="index.html"> <i class="fas fa-arrow-circle-left"></i></a>
+            <div class="main-d">
+                <div class="login col-md-6 col-xs-12 col-lg-8">
+                    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        @Html.EditorFor(i => i.UserName, additionalViewData: new { htmlAttributes = new { name = "user", id = "log-user", placeholder = "User Name" } })
+                        @Html.ValidationMessageFor(i => i.UserName, "", htmlAttributes: new { id = "erremail" })
+
+                        @Html.EditorFor(i => i.Password, additionalViewData: new { htmlAttributes = new { name = "pass", id = "log-pass", placeholder = "Password" } })
+                        @Html.ValidationMessageFor(i => i.Password, "", htmlAttributes: new { id = "errpass" })
+
+                        <input type="submit" name="ok" value="Login" class="btn" />
+
+                    }
+
+                    <div class="lo">
+                        <p class="text-center" style="color: #0984e3;">
+                            Don't Have an Account ?
+                            @Html.ActionLink("Register Now", "Register", "Account")
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 main-copy">
+                <p class="copy">
+                    &copy; 2020 ITI Ismallia 3M |
+                    <span class="copy-sp">Design by MedicalStore Team</span>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+</body>
+</html>
